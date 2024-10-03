@@ -23,9 +23,9 @@ const Feature = () => {
 			exit={{ opacity: 0, y: 50 }}
 			transition={{ duration: 0.6, ease: "easeInOut" }}
 		>
-			<Section>
+			<Section className=" py-0 ">
 				<Container className="grid items-stretch md:grid-cols-2 md:gap-12 max-w-screen-2xl " >
-					<div className="flex flex-col gap-6 py-8">
+					<div className="flex flex-col gap-6 py-8  ">
             <div className="flex items-center" >  
 						<h1 
             className="text-3xl !my-0">{t("title")}
@@ -35,7 +35,7 @@ const Feature = () => {
               
            
            </div>
-						<p className="font-light leading-[1.4] opacity-70">
+						<p className="text-md md:text-lg font-light leading-[1.4] opacity-70">
 							{t("description")}
 						</p>
 						<div className="not-prose flex items-center gap-2">

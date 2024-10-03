@@ -65,7 +65,7 @@ const HeroDescription = () => {
 	const t = useTranslations("Homepage");
 
 	return (
-		<Section className="  overflow-hidden flex-grow">
+		<Section className=" overflow-hidden flex-grow">
 			<motion.div
 				initial={{ opacity: 0, x: 200 }}
 				animate={{ opacity: 1, x: 0 }}
@@ -82,8 +82,8 @@ const HeroDescription = () => {
 						<h3 className="text-3xl">
 							<Balancer>{t("Hero.heroTitle")}</Balancer>
 						</h3>
-						<h4 className="text-xl font-light opacity-70">
-							<Balancer>{t("Hero.heroDescription")}</Balancer>
+						<h4 className="text-md md:text-lg font-light opacity-70">
+							<Balancer>{t("Hero.heroDescription")} </Balancer>
 						</h4>
 
 						<div className="w-full mt-6  flex-col grid gap-4 gap-x-4 md:mt-12  justify-items-center md:justify-items-start grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  md:w-[75%] ">
