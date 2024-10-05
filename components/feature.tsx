@@ -24,17 +24,17 @@ const Feature = () => {
 			transition={{ duration: 0.6, ease: "easeInOut" }}
 		>
 			<Section className=" py-0 ">
-				<Container className="grid items-stretch md:grid-cols-2 md:gap-12 max-w-screen-2xl " >
+				<Container className="grid items-stretch md:grid-cols-2 md:gap-12 max-w-screen-2xl ">
 					<div className="flex flex-col gap-6 py-8  ">
-            <div className="flex items-center" >  
-						<h1 
-            className="text-3xl !my-0">{t("title")}
+						<div className="flex items-center  ">
+							<h1 className="text-3xl !my-0">{t("title")}</h1>
 
-            </h1>
-            <span className="block w-2 h-2 rounded-full bg-green-500 ml-2 animate-pulse -mt-2  " />
-              
-           
-           </div>
+							{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+							<span className="  flex items-center ml-2 -mt-2 relative">
+								<span className="absolute animate-ping  h-2 w-2 rounded-full bg-green-400 opacity-75 z-0" />
+								<span className="  rounded-full h-2 w-2 bg-green-500 z-20" />
+							</span>
+						</div>
 						<p className="text-md md:text-lg font-light leading-[1.4] opacity-70">
 							{t("description")}
 						</p>
