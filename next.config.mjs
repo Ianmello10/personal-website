@@ -26,7 +26,7 @@ const options = {
       node.properties.className = ['word-highlight'];
     },
   };
-  
+
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   extension: /\.mdx?$/,
@@ -35,10 +35,8 @@ const withMDX = createMDX({
     remarkPlugins: [],
     rehypePlugins: [
         [
-          rehypeHighlight,
-          {
-            theme,
-          },
+          rehypePrettyCode,
+          options,
         ],
       ],  }
 })
@@ -75,7 +73,5 @@ const nextConfig = {
     }
 
 };
-
-
 
 export default withNextIntl(withMDX(nextConfig));
