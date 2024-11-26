@@ -9,7 +9,7 @@ import type { PostMetadata, Post } from "@/@types/md";
 import { cwd } from "node:process";
 
 export const getAllPosts = async (): Promise<Post[]> => {
-	const pathFiles = await globby(path.join(cwd(), "/app/posts/*.md"));
+	const pathFiles = await globby(path.join(cwd(), "/app/posts"));
 	console.log(pathFiles);
 
 	if (!pathFiles.length) {
