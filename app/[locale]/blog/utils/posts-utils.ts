@@ -11,7 +11,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
 	const pathFiles = await globby(
 		path.join(process.cwd(), "app/[locale]/blog/posts/*.md"),
 	);
-	console.log(pathFiles);
+
 	if (!pathFiles.length) {
 		console.error(pathFiles);
 		throw new Error("No posts found");
