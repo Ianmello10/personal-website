@@ -9,6 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Layout Component
+
 type LayoutProps = {
 	children: React.ReactNode;
 	className?: string;

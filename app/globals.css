@@ -76,3 +76,14 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Estilo para linhas destacadas */
+.highlighted {
+  background-color: rgba(255, 255, 0, 0.2); /* Amarelo claro */
+}
+
+/* Estilo para palavras destacadas */
+.word-highlight {
+  background-color: rgba(255, 0, 0, 0.2); /* Vermelho claro */
+}
+

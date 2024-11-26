@@ -9,6 +9,7 @@ import logo from "../public/images/foi2.png";
 import React from "react";
 import DropdownLocale from "./dropdown-locale";
 import { Link } from "@/i18n/routing";
+import { usePathname } from "next/navigation";
 type ComponentList = {
 	title: string;
 	href: string;
@@ -19,21 +20,25 @@ type PropsCookie = {
 };
 
 export default function NavBar({ cookieValue }: PropsCookie) {
+	const router = usePathname();
+
+	const isBlog = router.includes("blog");
+	const isHome = !router.includes("blog");
+
 	const t = useTranslations("Homepage");
 
 	const components: ComponentList[] = [
-		{ title: t("title"), href: "/" },
-		{ title: t("blog"), href: "/blog" },
+		{ title: isHome ? "" : t("title"), href: "/" },
+		{ title: isBlog ? "" : t("blog"), href: "/blog" },
 	];
 	return (
 		<Container className="not-prose max-w-screen-2xl w-full">
 			<nav className="flex items-center justify-between  h-16   border-[1px]  px-4 rounded-md">
 				<div className="flex items-center">
 					<h1 className="text-xl font-bold ">Ian</h1>
-					<Image src={logo} alt="Logo" width={40} height={40}  priority={true}/>
+					<Image src={logo} alt="Logo" width={40} height={40} priority={true} />
 				</div>
-				{listItems(components, { cookieValue })}
-
+				{listItems(components, { cookieValue }, isHome)}
 			</nav>
 		</Container>
 	);
@@ -41,6 +46,7 @@ export default function NavBar({ cookieValue }: PropsCookie) {
 const listItems = (
 	components: ComponentList[],
 	{ cookieValue }: PropsCookie,
+	isHome: boolean,
 ) => {
 	return (
 		<ul className="list-none flex  items-center gap-x-2 text-sm ">
@@ -50,7 +56,7 @@ const listItems = (
 				</li>
 			))}
 			<ModeToggle />
-			<DropdownLocale cookieValue={cookieValue} />
+			{isHome && <DropdownLocale cookieValue={cookieValue} />}{" "}
 		</ul>
 	);
 };

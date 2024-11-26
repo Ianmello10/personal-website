@@ -1,24 +1,17 @@
 {
-    "Homepage" : {
-        "title": "Home",
-        "about": "About",
-        "blog": "Blog",
+  "Homepage": {
+    "title": "Home",
+    "about": "About",
+    "blog": "Blog",
 
-        "Feature": {
-            "title": "Software developer",
-            "description": "Software developer focused on creating functional and intuitive websites and applications, taking care of the entire process, from the visual to the internal functioning. Lover of simplicity and nature."
-             
-        },
-        "Hero":{
-
-            "heroTitle": "My Setup",
-            "heroDescription": "Technologies I currently work with"
-
-
-        }
-
-        
-    } 
- 
-   
+    "Feature": {
+      "title": "Software developer",
+      "description": "Software developer focused on creating functional and intuitive websites and applications, taking care of the entire process, from the visual to the internal functioning. Lover of simplicity and nature."
+    },
+    "Hero": {
+      "heroTitle": "My Stack",
+      "heroDescription": "I currently work with"
+    }
+  }
 }
+

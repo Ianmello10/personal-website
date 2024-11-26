@@ -1,15 +1,15 @@
 {
-	"Homepage": {
-		"title": "Início",
-		"about": "Sobre",
-		"blog": "Blog",
-		"Feature": {
-			"title": "Software developer",
-			"description": "Desenvolvedor de software focado em criar sites e aplicativos funcionais e intuitivos, cuidando de todo o processo, do visual ao funcionamento interno. Amante do simples e da natureza."
-		},
-		"Hero": {
-			"heroTitle": "Meu Setup",
-			"heroDescription": "Tecnologias com que trabalho atualmente"
-		}
-	}
+  "Homepage": {
+    "title": "Início",
+    "about": "Sobre",
+    "blog": "Blog",
+    "Feature": {
+      "title": "Software developer",
+      "description": "Desenvolvedor de software focado em criar sites e aplicativos funcionais e intuitivos, cuidando de todo o processo, do visual ao funcionamento interno."
+    },
+    "Hero": {
+      "heroTitle": "Minha Stack",
+      "heroDescription": "Tecnologias com que trabalho atualmente"
+    }
+  }
 }

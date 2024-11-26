@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../../app/globals.css";
-import { Layout, Main } from "@/components/craft";
+import { Layout } from "@/components/craft";
 import { ThemeProvider } from "@/components/theme-provider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
 
 const geistSans = localFont({
 	src: "../fonts/GeistVF.woff",
@@ -31,11 +33,13 @@ export const metadata: Metadata = {
 };
 export default async function RootLayout({
 	children,
-	params: { locale },
+	params,
 }: Readonly<{
 	children: React.ReactNode;
-	params: { locale: string };
+	params: Promise<{ locale: string }>;
 }>) {
+	const { locale } = await params;
+
 	const messages = await getMessages();
 
 	return (

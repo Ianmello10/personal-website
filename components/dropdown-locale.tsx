@@ -10,6 +10,7 @@ import { Button } from "./ui/button";
 import { useRouter } from "@/i18n/routing";
 import React from "react";
 import { Languages } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 type PropsDropdownLocale = {
 	cookieValue: string | undefined;
@@ -19,6 +20,10 @@ const DropdownLocale = ({ cookieValue }: PropsDropdownLocale) => {
 	const [position, setPosition] = React.useState(cookieValue);
 
 	const router = useRouter();
+	 const verifyPathName = usePathname()
+
+
+ const isBlog = verifyPathName.includes("blog") 
 
 	return (
 		<DropdownMenu>
