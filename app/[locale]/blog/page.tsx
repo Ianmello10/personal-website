@@ -35,6 +35,7 @@ const blogPage = async () => {
 									{post.frontmatter.tags.map((tag, index) => (
 										<Badge
 											variant="outline"
+											// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 											key={index}
 											className="flex items-center justify-ce'nter h-5 w-auto   px-2    py-0"
 										>

@@ -1,16 +1,14 @@
 import { globby } from "globby";
-import fs from "fs";
+import fs from "node:fs";
 import { compileMDX } from "next-mdx-remote/rsc";
-import path from "path";
+import path from "node:path";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { extractTocContent } from "./extract-toc";
 import type { PostMetadata, Post } from "@/@types/md";
 
 export const getAllPosts = async (): Promise<Post[]> => {
-	const pathFiles = await globby(
-		path.join(process.cwd(), "app/[locale]/blog/posts/*.md"),
-	);
+	const pathFiles = await globby("app/posts/*.md");
 
 	if (!pathFiles.length) {
 		console.error(pathFiles);
@@ -39,7 +37,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
 };
 
 export const getPostBySlug = async (slug: string): Promise<Post> => {
-	const filePath = await globby([`app/[locale]/blog/posts/${slug}.md`]);
+	const filePath = await globby([`app/posts/${slug}.md`]);
 	const contentFilePath = fs.readFileSync(filePath[0], "utf-8");
 	const toc = await extractTocContent(contentFilePath);
 

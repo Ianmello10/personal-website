@@ -1,7 +1,7 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import { visit } from "unist-util-visit";
-import { Heading } from "mdast";
+import type { Heading } from "mdast";
 import matter from "gray-matter";
 import rehypeSlug from "rehype-slug";
 import { slug } from "github-slugger";
@@ -15,7 +15,7 @@ export const extractTocContent = async (content: string) => {
 	const toc: Array<Toc> = [];
 
 	visit(tree, "heading", (node: Heading) => {
-		if (node.depth == 2) {
+		if (node.depth === 2) {
 			const textNode = node.children.find((child) => child.type === "text");
 
 			toc.push({
