@@ -6,9 +6,11 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { extractTocContent } from "./extract-toc";
 import type { PostMetadata, Post } from "@/@types/md";
+import { cwd } from "node:process";
 
 export const getAllPosts = async (): Promise<Post[]> => {
-	const pathFiles = await globby("app/posts/*.md");
+	const pathFiles = await globby(path.join(cwd(), "/app/posts/*.md"));
+	console.log(pathFiles);
 
 	if (!pathFiles.length) {
 		console.error(pathFiles);
