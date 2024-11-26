@@ -13,6 +13,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
 	);
 	console.log(pathFiles);
 	if (!pathFiles.length) {
+		console.error(pathFiles);
 		throw new Error("No posts found");
 	}
 
