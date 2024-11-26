@@ -8,7 +8,10 @@ import { extractTocContent } from "./extract-toc";
 import type { PostMetadata, Post } from "@/@types/md";
 
 export const getAllPosts = async (): Promise<Post[]> => {
-	const pathFiles = await globby("app/[locale]/blog/posts/*.md");
+	const pathFiles = await globby(
+		path.join(process.cwd(), "app/[locale]/blog/posts/*.md"),
+	);
+	console.log(pathFiles);
 	if (!pathFiles.length) {
 		throw new Error("No posts found");
 	}

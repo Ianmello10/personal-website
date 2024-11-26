@@ -5,8 +5,6 @@ import { Layout } from "@/components/craft";
 import { ThemeProvider } from "@/components/theme-provider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { routing } from "@/i18n/routing";
-import { notFound } from "next/navigation";
 
 const geistSans = localFont({
 	src: "../fonts/GeistVF.woff",
