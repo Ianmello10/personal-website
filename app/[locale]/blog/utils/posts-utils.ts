@@ -7,7 +7,6 @@ import rehypeSlug from "rehype-slug";
 import { extractTocContent } from "./extract-toc";
 import type { PostMetadata, Post } from "@/@types/md";
 import { cwd } from "node:process";
-import { notFound } from "next/navigation";
 
 export const getAllPosts = async (): Promise<Post[]> => {
 	const pathFiles = await globby(path.join(cwd(), "/app/posts/"));
@@ -38,7 +37,7 @@ export const getPostBySlug = async (slug: string): Promise<Post> => {
 	const filePath = await globby(path.join(cwd(), `app/posts/${slug}.md`));
 
 	if (!filePath.length) {
-		notFound();
+		throw new Error("Post not found");
 	}
 
 	const contentFilePath = fs.readFileSync(filePath[0], "utf-8");

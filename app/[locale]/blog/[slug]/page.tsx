@@ -8,6 +8,8 @@ import { ArrowLeft } from "lucide-react";
 import PageTransition from "@/components/animate";
 
 export const revalidate = 3600;
+export const dynamicParams = true;
+export const dynamic = "force-static";
 
 export async function generateStaticParams() {
 	const posts = await getAllPosts();
