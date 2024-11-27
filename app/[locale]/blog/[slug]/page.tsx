@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import PageTransition from "@/components/animate";
 
-export const revalidate = 60 * 60;
+export const revalidate = 3600;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
