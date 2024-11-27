@@ -9,7 +9,7 @@ import type { PostMetadata, Post } from "@/@types/md";
 import { cwd } from "node:process";
 
 export const getAllPosts = async (): Promise<Post[]> => {
-	const pathFiles = await globby("app/posts");
+	const pathFiles = await globby(path.join(cwd(), "/app/posts/"));
 
 	if (!pathFiles.length) {
 		console.error(pathFiles);
@@ -38,7 +38,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
 };
 
 export const getPostBySlug = async (slug: string): Promise<Post> => {
-	const filePath = await globby(`app/posts/${slug}.md`);
+	const filePath = await globby([`app/posts/${slug}.md`]);
 	const contentFilePath = fs.readFileSync(filePath[0], "utf-8");
 	const toc = await extractTocContent(contentFilePath);
 
