@@ -7,6 +7,7 @@ import rehypeSlug from "rehype-slug";
 import { extractTocContent } from "./extract-toc";
 import type { PostMetadata, Post } from "@/@types/md";
 import { cwd } from "node:process";
+import { notFound } from "next/navigation";
 
 export const getAllPosts = async (): Promise<Post[]> => {
 	const pathFiles = await globby(path.join(cwd(), "/app/posts/"));
@@ -18,15 +19,11 @@ export const getAllPosts = async (): Promise<Post[]> => {
 
 	const filesWithOutExtensions = pathFiles.map((file) => path.parse(file).name);
 
-	const posts = filesWithOutExtensions.map((v) => getPostBySlug(v));
+	const posts = await Promise.all(
+		filesWithOutExtensions.map((v) => getPostBySlug(v)),
+	);
 
-	const postList = [];
-
-	for await (const post of posts) {
-		postList.push(post);
-	}
-
-	const orderedPosts = postList
+	const orderedPosts = posts
 		.map((post) => post)
 		.sort(
 			(a, b) =>
@@ -38,7 +35,12 @@ export const getAllPosts = async (): Promise<Post[]> => {
 };
 
 export const getPostBySlug = async (slug: string): Promise<Post> => {
-	const filePath = await globby([`app/posts/${slug}.md`]);
+	const filePath = await globby(path.join(cwd(), `app/posts/${slug}.md`));
+
+	if (!filePath.length) {
+		notFound();
+	}
+
 	const contentFilePath = fs.readFileSync(filePath[0], "utf-8");
 	const toc = await extractTocContent(contentFilePath);
 
