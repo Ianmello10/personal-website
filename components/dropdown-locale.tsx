@@ -8,9 +8,8 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { useRouter } from "@/i18n/routing";
-import React from "react";
+import React, { useEffect } from "react";
 import { Languages } from "lucide-react";
-import { usePathname } from "next/navigation";
 
 type PropsDropdownLocale = {
 	cookieValue: string | undefined;
@@ -18,12 +17,18 @@ type PropsDropdownLocale = {
 
 const DropdownLocale = ({ cookieValue }: PropsDropdownLocale) => {
 	const [position, setPosition] = React.useState(cookieValue);
-
 	const router = useRouter();
-	 const verifyPathName = usePathname()
 
+	useEffect(() => {
+		setPosition(cookieValue);
+	}, [cookieValue]);
 
- const isBlog = verifyPathName.includes("blog") 
+	const handleLocaleChange = (value: string) => {
+		if (value === "pt" || value === "en") {
+			setPosition(value);
+			router.replace("/", { locale: value });
+		}
+	};
 
 	return (
 		<DropdownMenu>
@@ -33,20 +38,12 @@ const DropdownLocale = ({ cookieValue }: PropsDropdownLocale) => {
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-auto">
-				<DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-					<DropdownMenuRadioItem
-						onClick={() => router.replace("/", { locale: "pt" })}
-						value="pt"
-					>
-						Pt
-					</DropdownMenuRadioItem>
-
-					<DropdownMenuRadioItem
-						onClick={() => router.replace("/", { locale: "en" })}
-						value="en"
-					>
-						En
-					</DropdownMenuRadioItem>
+				<DropdownMenuRadioGroup
+					value={position}
+					onValueChange={handleLocaleChange}
+				>
+					<DropdownMenuRadioItem value="pt">Pt</DropdownMenuRadioItem>
+					<DropdownMenuRadioItem value="en">En</DropdownMenuRadioItem>
 				</DropdownMenuRadioGroup>
 			</DropdownMenuContent>
 		</DropdownMenu>

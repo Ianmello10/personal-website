@@ -6,6 +6,9 @@ import Link from "next/link";
 import { getAllPosts } from "./utils/posts-utils";
 import PageTransition from "@/components/animate";
 
+//export const revalidate = 3600;
+//export const dynamic = "force-static";
+
 const blogPage = async () => {
 	const allPosts = await getAllPosts();
 

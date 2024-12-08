@@ -5,7 +5,6 @@ import { ModeToggle } from "./mode-toggle";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import logo from "../public/images/foi2.png";
-
 import React from "react";
 import DropdownLocale from "./dropdown-locale";
 import { Link } from "@/i18n/routing";
@@ -28,7 +27,7 @@ export default function NavBar({ cookieValue }: PropsCookie) {
 	const t = useTranslations("Homepage");
 
 	const components: ComponentList[] = [
-		{ title: isHome ? "" : t("title"), href: "/" },
+		{ title: isHome ? "" : "Home", href: "/" },
 		{ title: isBlog ? "" : t("blog"), href: "/blog" },
 	];
 	return (
