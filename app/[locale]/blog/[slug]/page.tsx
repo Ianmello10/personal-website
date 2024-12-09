@@ -1,23 +1,16 @@
 import { Container, Section, Article } from "@/components/craft";
 import type { Metadata } from "next/types";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "../utils/posts-utils";
+import { getPostBySlug } from "../utils/posts-utils";
 import Toc from "@/components/toc";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import PageTransition from "@/components/animate";
+import { Suspense } from "react";
 
 //export const revalidate = 3600;
 //export const dynamicParams = true;
 //export const dynamic = "force-static";
-
-export async function generateStaticParams() {
-	const posts = await getAllPosts();
-
-	return posts.map((post) => ({
-		slug: post.slug,
-	}));
-}
 
 export async function generateMetadata({
 	params,
