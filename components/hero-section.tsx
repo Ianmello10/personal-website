@@ -18,7 +18,6 @@ import {
 } from "./icons";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
 
 type FeatureText = {
 	icon: JSX.Element;
@@ -62,8 +61,6 @@ const featureText: FeatureText[] = [
 	},
 ];
 const HeroDescription = () => {
-	const t = useTranslations("Homepage");
-
 	return (
 		<Section className=" overflow-hidden flex-grow">
 			<motion.div
@@ -80,15 +77,17 @@ const HeroDescription = () => {
 				<Container className="not-prose max-w-screen-2xl   ">
 					<div className="flex flex-col gap-2 	">
 						<h3 className="text-3xl">
-							<Balancer>{t("Hero.heroTitle")}</Balancer>
+							<Balancer>Stack</Balancer>
 						</h3>
 						<h4 className="text-md md:text-lg font-light opacity-70">
-							<Balancer>{t("Hero.heroDescription")} </Balancer>
+							<Balancer>I currently wokr with </Balancer>
 						</h4>
 
-						<div className="w-full mt-6  flex-col grid gap-4 gap-x-4 
+						<div
+							className="w-full mt-6  flex-col grid gap-4 gap-x-4 
 						md:mt-12  justify-items-center md:justify-items-start grid-cols-1 
-						sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  md:w-[75%] ">
+						sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  md:w-[75%] "
+						>
 							{featureText.map(({ icon }, index) => (
 								<div
 									className="flex w-full md:w-full h-36 flex-col  border-[1px] p-4 

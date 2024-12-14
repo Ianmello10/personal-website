@@ -6,12 +6,11 @@ import Link from "next/link";
 import { getAllPosts } from "./utils/posts-utils";
 import PageTransition from "@/components/animate";
 import { Suspense } from "react";
-import { routing } from "@/i18n/routing";
 
-//export const revalidate = 3600;
-//export const dynamic = "force-static";
+export const revalidate = 3600;
+export const dynamic = "force-static";
 
-const blogPage = async () => {
+export default async function Page() {
 	const allPosts = await getAllPosts();
 
 	return (
@@ -66,6 +65,4 @@ const blogPage = async () => {
 			</PageTransition>
 		</Suspense>
 	);
-};
-
-export default blogPage;
+}

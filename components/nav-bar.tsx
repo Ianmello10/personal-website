@@ -3,32 +3,24 @@
 import { Container } from "@/components/craft";
 import { ModeToggle } from "./mode-toggle";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import logo from "../public/images/foi2.png";
 import React from "react";
-import DropdownLocale from "./dropdown-locale";
-import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 type ComponentList = {
 	title: string;
 	href: string;
 };
 
-type PropsCookie = {
-	cookieValue: string | undefined;
-};
-
-export default function NavBar({ cookieValue }: PropsCookie) {
+export default function NavBar() {
 	const router = usePathname();
 
 	const isBlog = router.includes("blog");
 	const isHome = !router.includes("blog");
 
-	const t = useTranslations("Homepage");
-
 	const components: ComponentList[] = [
 		{ title: isHome ? "" : "Home", href: "/" },
-		{ title: isBlog ? "" : t("blog"), href: "/blog" },
+		{ title: isBlog ? "" : "Blog", href: "/blog" },
 	];
 	return (
 		<Container className="not-prose max-w-screen-2xl w-full">
@@ -37,16 +29,12 @@ export default function NavBar({ cookieValue }: PropsCookie) {
 					<h1 className="text-xl font-bold ">Ian</h1>
 					<Image src={logo} alt="Logo" width={40} height={40} priority={true} />
 				</div>
-				{listItems(components, { cookieValue }, isHome)}
+				{listItems(components)}
 			</nav>
 		</Container>
 	);
 }
-const listItems = (
-	components: ComponentList[],
-	{ cookieValue }: PropsCookie,
-	isHome: boolean,
-) => {
+const listItems = (components: ComponentList[]) => {
 	return (
 		<ul className="list-none flex  items-center gap-x-2 text-sm ">
 			{components.map((component) => (
@@ -55,7 +43,6 @@ const listItems = (
 				</li>
 			))}
 			<ModeToggle />
-			{isHome && <DropdownLocale cookieValue={cookieValue} />}{" "}
 		</ul>
 	);
 };

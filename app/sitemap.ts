@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/app/[locale]/blog/utils/posts-utils";
+import { getAllPosts } from "@/app/blog/utils/posts-utils";
 
 export const baseUrl =
 	process.env.NODE_ENV === "development"
