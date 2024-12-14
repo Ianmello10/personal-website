@@ -5,6 +5,7 @@ import { Layout } from "@/components/craft";
 import { ThemeProvider } from "@/components/theme-provider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { routing } from "@/i18n/routing";
 
 const geistSans = localFont({
 	src: "../fonts/GeistVF.woff",
@@ -29,6 +30,10 @@ export const metadata: Metadata = {
 		type: "website",
 	},
 };
+
+export function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }));
+}
 export default async function RootLayout({
 	children,
 	params,
