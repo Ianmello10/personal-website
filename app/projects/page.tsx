@@ -24,7 +24,7 @@ const projects = [
     id: 1,
     title: "Fastify REST API",
     description:
-      "A high-performance REST API built with Fastify framework, featuring modern Node.js architecture and optimized for speed and scalability.",
+      "A REST API built with Fastify, applying SOLID principles and clean architecture for learning purposes. Focused on code modularity, scalability, and modern Node.js best practices.",
     icon: Server,
     githubUrl: "https://github.com/Ianmello10/fastify-rest-api",
     tags: ["Node.js", "Fastify", "REST API", "TypeScript"],
