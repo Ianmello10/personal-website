@@ -4,7 +4,14 @@ import Link from "next/link";
 import { Section, Container } from "@/components/craft";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, Linkedin, Mail, Download, ExternalLink } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  ExternalLink,
+  Ellipsis,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 
@@ -50,8 +57,6 @@ function TypingText({
 function Terminal({ props }: { props: PropsWeather }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTypingCommand, setIsTypingCommand] = useState(true);
-  const [weather] = useState("30°C");
-  const [time, setTime] = useState("");
 
   const commands = [
     { command: "whoami", output: "I'm Ian full-stack developer" },
@@ -112,7 +117,9 @@ function Terminal({ props }: { props: PropsWeather }) {
           <div className="w-3 h-3 rounded-full bg-green-500" />
         </div>
         <div className="text-gray-400 text-xs">terminal</div>
-        <div className="text-gray-400 text-xs">{weather}</div>
+        <div className="text-gray-400 text-xs">
+          <Ellipsis />
+        </div>
       </div>
 
       <div className="p-4 min-h-96 overflow-hidden pb-10">
