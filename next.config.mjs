@@ -3,7 +3,7 @@ import createMDX from "@next/mdx";
 
 const withMDX = createMDX({});
 const nextConfig = {
-	transpilePackages: ["next-mdx-remote"],
+	transpilePackages: ["next-mdx-remote", 'three'],
 	pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 
 	async redirects() {
